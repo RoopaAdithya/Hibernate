@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" 
+	default-init-method="init" default-destroy-method="destroy">
+
+	<bean id="c" class="com.siri.ContractEmployee" lazy-init="true">
+	</bean>
+	<bean id="r" class="com.siri.RegularEmployee" lazy-init="true"></bean>
+	<bean id="e" class="com.siri.EmployeeService">
+
+		<property name="emp">
+			<ref bean="c" />
+
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="ec" class="com.siri.EmployeeServiceConstructorInjection" lazy-init="true" >
+	
+	<constructor-arg name="emp1">
+	
+	<ref bean="r"/>
+	</constructor-arg>
+	
+	</bean>
+	
+	<bean id="book" class="com.siri.BookImpl" scope="singleton" lazy-init="true" >
+	<!-- <property name="bname"></property> -->
+	
+	</bean>
+	</beans>
